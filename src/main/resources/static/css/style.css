@@ -55,6 +55,11 @@ Table OF Contents
 	Typography
 \*----------------------------*/
 
+:active, :hover, :focus {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -74,12 +79,11 @@ a {
   transition: 0.2s color;
 }
 
-a:hover, a:focus {
+a:hover, a:focus{
   color: #D10024;
   text-decoration: none;
   outline: none;
 }
-
 ul, ol {
   margin: 0;
   padding: 0;
@@ -102,6 +106,10 @@ ul, ol {
   text-align: center;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+}
+
+button.primary-btn {
+  width: 100%;
 }
 
 .primary-btn:hover, .primary-btn:focus {
@@ -420,25 +428,29 @@ textarea.input {
   background-color: #1E1F29;
 }
 
+.header-links {
+  font-size: 12px;
+}
+
 .header-links li {
   display: inline-block;
   margin-right: 15px;
-  font-size: 12px;
 }
 
 .header-links li:last-child {
   margin-right: 0px;
 }
 
-.header-links li a {
+.header-links a {
   color: #FFF;
 }
 
-.header-links li a:hover {
+.header-links a:hover {
   color: #D10024;
+  cursor: pointer;
 }
 
-.header-links li i {
+.header-links i {
   color: #D10024;
   margin-right: 5px;
 }
@@ -592,7 +604,9 @@ textarea.input {
   margin: 0px -17px -17px;
 }
 
-.cart-dropdown .cart-btns>a {
+
+.cart-dropdown .cart-btns>a,
+.cart-dropdown .cart-btns>button {
   display: inline-block;
   width: calc(50% - 0px);
   padding: 12px;
@@ -602,14 +616,17 @@ textarea.input {
   font-weight: 700;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+  border: 0;
 }
 
-.cart-dropdown .cart-btns>a:first-child {
+.cart-dropdown .cart-btns>a:first-child,
+.cart-dropdown .cart-btns>button:first-child {
   margin-right: -4px;
   background-color: #1e1f29;
 }
 
-.cart-dropdown .cart-btns>a:hover {
+.cart-dropdown .cart-btns>a:hover,
+.cart-dropdown .cart-btns>button:hover {
   opacity: 0.9;
 }
 
@@ -2048,11 +2065,13 @@ textarea.input {
   margin-top: 30px;
   display: block;
   font-size: 12px;
+  color: #2B2D42;
 }
 
 .footer-payments li {
   display: inline-block;
   margin-right: 5px;
+  color: #737373;
 }
 
 .footer-payments li a {

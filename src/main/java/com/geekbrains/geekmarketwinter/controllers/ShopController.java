@@ -1,9 +1,6 @@
 package com.geekbrains.geekmarketwinter.controllers;
 
-import com.geekbrains.geekmarketwinter.entites.DeliveryAddress;
-import com.geekbrains.geekmarketwinter.entites.Order;
-import com.geekbrains.geekmarketwinter.entites.Product;
-import com.geekbrains.geekmarketwinter.entites.User;
+import com.geekbrains.geekmarketwinter.entites.*;
 import com.geekbrains.geekmarketwinter.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +18,7 @@ import java.util.Optional;
 @RequestMapping("/shop")
 public class ShopController {
     private static final int INITIAL_PAGE = 0;
-    private static final int PAGE_SIZE = 5;
+    private static final int PAGE_SIZE = 6;
 
     private MailService mailService;
     private UserService userService;
@@ -29,6 +26,12 @@ public class ShopController {
     private ProductService productService;
     private ShoppingCartService shoppingCartService;
     private DeliveryAddressService deliverAddressService;
+    private CategoryService categoryService;
+
+    @Autowired
+    public void setCategoryService(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @Autowired
     public void setProductService(ProductService productService) {
@@ -65,10 +68,12 @@ public class ShopController {
         final int currentPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
         final int totalPageNumber = totalPage.orElse(productService.getAllProductsByPage(currentPage, PAGE_SIZE).getTotalPages());
         List<Product> products = productService.getAllProductsByPage(currentPage, PAGE_SIZE).getContent();
+        List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("products", products);
         model.addAttribute("page", currentPage);
         model.addAttribute("totalPage", totalPageNumber);
         model.addAttribute("productService", productService);
+        model.addAttribute("categories", categories);
         return "shop-page";
     }
 

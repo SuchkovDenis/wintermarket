@@ -37,6 +37,13 @@ public class ProductController {
         this.imageSaverService = imageSaverService;
     }
 
+    @GetMapping("/{id}")
+    public String product(Model model, @PathVariable(name = "id") Long id) {
+        Product product = productService.getProductById(id);
+        model.addAttribute("product", product);
+        return "product";
+    }
+
     @GetMapping("/edit/{id}")
     public String edit(Model model, @PathVariable(name = "id") Long id) {
         Product product = productService.getProductById(id);
