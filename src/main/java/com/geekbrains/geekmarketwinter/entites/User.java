@@ -1,12 +1,14 @@
 package com.geekbrains.geekmarketwinter.entites;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 @Data
+@ToString
 @Table(name = "users")
 public class User {
 	@Id
@@ -28,6 +30,9 @@ public class User {
 
 	@Column(name = "email")
 	private String email;
+
+	@Column(name = "phone")
+	private String phone;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "users_roles",
@@ -56,10 +61,4 @@ public class User {
 		this.roles = roles;
 	}
 
-	@Override
-	public String toString() {
-		return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + "*********" + '\''
-				+ ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
-				+ ", roles=" + roles + '}';
-	}
 }

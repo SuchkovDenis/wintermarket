@@ -12,32 +12,35 @@ import javax.validation.constraints.Size;
 
 @Data
 @NoArgsConstructor
-@FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
+@FieldMatch(first = "password", second = "matchingPassword", message = "Пароли не совпадают")
 public class SystemUser {
-    @NotNull(message = "not null check")
-    @Size(min = 3, message = "username length must be greater than 2 symbols")
+    @NotNull(message = "поле не должно быть пустым")
+    @Size(min = 3, message = "Имя пользователя должно состоять не менее чем из 3 символов")
 //    @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 letters/digits")
     private String userName;
 
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
+    @NotNull(message = "поле не должно быть пустым")
+    @Size(min = 1, message = "поле не должно быть пустым")
     private String password;
 
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
+    @NotNull(message = "поле не должно быть пустым")
+    @Size(min = 1, message = "поле не должно быть пустым")
     private String matchingPassword;
 
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
+    @NotNull(message = "поле не должно быть пустым")
+    @Size(min = 1, message = "поле не должно быть пустым")
     private String firstName;
 
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
+    @NotNull(message = "поле не должно быть пустым")
+    @Size(min = 1, message = "поле не должно быть пустым")
     private String lastName;
 
+    @NotNull(message = "поле не должно быть пустым")
+    @Size(min = 1, message = "поле не должно быть пустым")
+    private String phone;
+
     @ValidEmail
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
-    // @Email
+    @NotNull(message = "поле не должно быть пустым")
+    @Size(min = 1, message = "поле не должно быть пустым")
     private String email;
 }

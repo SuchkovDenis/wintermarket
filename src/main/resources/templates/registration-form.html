@@ -6,33 +6,72 @@
 <html lang="en">
 
 <head>
-    <title>Register New User Form</title>
+    <title>Регистрация</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-		.error {color:red}
-    </style>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700"
+          rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css"
+          rel="stylesheet"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+
+    <!-- Slick -->
+    <link type="text/css"
+          rel="stylesheet"
+          href="../static/css/slick.css"
+          th:href="@{/css/slick.css}"/>
+    <link type="text/css"
+          rel="stylesheet"
+          href="../static/css/slick-theme.css"
+          th:href="@{/css/slick-theme.css}"/>
+
+    <!-- nouislider -->
+    <link type="text/css"
+          rel="stylesheet"
+          href="../static/css/nouislider.min.css"
+          th:href="@{/css/nouislider.min.css}"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet"
+          href="../static/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}"/>
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css"
+          rel="stylesheet"
+          href="../static/css/style.css"
+          th:href="@{/css/style.css}"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="icon" type="image/png" th:href="@{/favicon.ico}"/>
 </head>
 
 <body>
 
-<div>
+<header th:replace="~{blocks/header }"></header>
 
-    <div id="loginbox" style="margin-top: 50px;"
-         class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+<nav th:replace="~{blocks/navigation :: navi('Register')}"></nav>
 
-        <div class="panel panel-primary">
-
-            <div class="panel-heading">
-                <div class="panel-title">Register New User</div>
-            </div>
-
-            <div style="padding-top: 30px" class="panel-body">
+<div class="section">
+    <div class="container">
+        <div id="loginbox" class="col-md-8 col-md-offset-2">
+            <div class="panel-body">
                 <form th:action="@{/register/processRegistrationForm}"
-                      th:object="${systemUser}" method="post" class="form-horizontal">
+                      th:object="${systemUser}" method="post" class="form-horizontal order-details">
 
                     <div class="form-group">
                         <div class="col-xs-15">
@@ -45,57 +84,66 @@
                     </div>
 
                     <!-- User name -->
-                    <div class="error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" />
+                    <div class="error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{userName}" placeholder="username (*)" class="form-control"/>
+                        <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                        <input th:field="*{userName}" placeholder="логин *" class="input"/>
                     </div>
 
                     <!-- Password -->
-                    <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+                    <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" th:field="*{password}" placeholder="password (*)" class="form-control"/>
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" th:field="*{password}" placeholder="пароль *" class="input"/>
                     </div>
 
                     <!-- Confirm Password -->
-                    <div class="error" th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}" />
+                    <div class="error" th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}"></div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" th:field="*{matchingPassword}" placeholder="confirm password (*)" class="form-control"/>
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" th:field="*{matchingPassword}" placeholder="подтверждение пароля *" class="input"/>
                     </div>
 
 
                     <!-- First name -->
-                    <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
+                    <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{firstName}" placeholder="first name (*)" class="form-control"/>
+                        <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                        <input th:field="*{firstName}" placeholder="Имя *" class="input"/>
                     </div>
 
                     <!-- Last name -->
                     <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{lastName}" placeholder="last name (*)" class="form-control"/>
+                        <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                        <input th:field="*{lastName}" placeholder="Фамилия *" class="input"/>
                     </div>
 
                     <!-- Email -->
-                    <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+                    <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{email}" placeholder="email (*)" class="form-control"/>
+                        <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                        <input th:field="*{email}" placeholder="Email *" class="input"/>
                     </div>
 
-                    <div style="margin-top: 10px" class="form-group">
-                        <div class="col-sm-6 controls">
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </div>
+                    <!-- Phone -->
+                    <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                        <input th:field="*{phone}" placeholder="Телефон *" class="input"/>
                     </div>
+
+                    <div class="cart-btns">
+                        <a href="/wintermarket/login">Войти</a>
+                        <button type="submit">Зарегистрироваться</button>
+                    </div>
+
                 </form>
             </div>
         </div>
     </div>
 </div>
+<footer th:replace="~{blocks/footer}"></footer>
+
 </body>
 </html>

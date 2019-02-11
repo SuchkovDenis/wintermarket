@@ -39,9 +39,21 @@
                     </form>
                 </div>
                 <div class="cart-dropdown" sec:authorize="isAuthenticated()">
+                    <div class="product-widget">
+                        <div class="product-img">
+                            <img src="../../static/img/user.png"
+                                 alt=""
+                                 th:src="@{/img/user.png}">
+                        </div>
+                        <div class="product-body">
+                            <h3 class="product-name">Пользователь</h3>
+                            <h4 class="product-price"  sec:authentication="name"></h4>
+                        </div>
+                    </div>
                     <form th:action="@{/logout}" method="POST">
                         <div class="cart-btns">
                             <button>Выйти</button>
+                            <a th:href="@{/profile}">Профиль</a>
                         </div>
                     </form>
                 </div>

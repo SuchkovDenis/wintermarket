@@ -67,105 +67,70 @@
 
 <nav th:replace="~{blocks/navigation :: navi('Cart')}"></nav>
 
-    <!-- SECTION -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
 
-                <!-- Order Details -->
-                <div class="col-md-offset-2 col-md-8 order-details">
-                    <div class="section-title text-center">
-                        <h3 class="title">КОРЗИНА</h3>
-                    </div>
-                    <div class="order-summary" th:if="${cart.getItems().size() > 0}">
-                        <div class="order-col">
-                            <div><strong>ТОВАРЫ</strong></div>
-                            <div><strong>ЦЕНА</strong></div>
-                        </div>
-                        <div class="order-products">
-                            <div class="order-col" th:each="item : ${cart.getItems()}">
-                                <div><span th:text="${item.quantity}">1</span>x <span th:text="${item.product.title}">Название товара</span></div>
-                                <div th:text="${item.totalPrice}">$980.00</div>
-                            </div>
-                        </div>
-                        <div class="order-col">
-                            <div>Доставка</div>
-                            <div><strong>БЕСПЛАТНО</strong></div>
-                        </div>
-                        <div class="order-col">
-                            <div><strong>ИТОГО</strong></div>
-                            <div><strong class="order-total" th:text="${cart.totalCost}"></strong></div>
-                        </div>
-                        <a href="#"
-                           type="button"
-                           class="primary-btn order-submit"
-                           sec:authorize="isAuthenticated()"
-                           th:href="@{/shop/order/fill}">
-                            ОФОРМИТЬ ЗАКАЗ
-                        </a>
-                        <a type="button"
-                           class="primary-btn order-submit"
-                           data-toggle="modal"
-                           data-target="#authWarningModal"
-                           sec:authorize="isAnonymous()">
-                            ОФОРМИТЬ ЗАКАЗ
-                        </a>
-                    </div>
-                    <div th:unless="${cart.getItems().size() > 0}" >
-                        <span>Ваша корзина пуста</span>
-                    </div>
-
+            <!-- Order Details -->
+            <div class="col-md-offset-2 col-md-8 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">КОРЗИНА</h3>
                 </div>
-                <!-- /Order Details -->
+                <div class="order-summary" th:if="${cart.getItems().size() > 0}">
+                    <div class="order-col">
+                        <div><strong>ТОВАРЫ</strong></div>
+                        <div><strong>ЦЕНА</strong></div>
+                    </div>
+                    <div class="order-products">
+                        <div class="order-col" th:each="item : ${cart.getItems()}">
+                            <div><span th:text="${item.quantity}">1</span>x <span th:text="${item.product.title}">Название товара</span></div>
+                            <div th:text="${item.totalPrice}">$980.00</div>
+                        </div>
+                    </div>
+                    <div class="order-col">
+                        <div>Доставка</div>
+                        <div><strong>БЕСПЛАТНО</strong></div>
+                    </div>
+                    <div class="order-col">
+                        <div><strong>ИТОГО</strong></div>
+                        <div><strong class="order-total" th:text="${cart.totalCost}"></strong></div>
+                    </div>
+                    <a href="#"
+                       type="button"
+                       class="primary-btn order-submit"
+                       sec:authorize="isAuthenticated()"
+                       th:href="@{/shop/order/fill}">
+                        ОФОРМИТЬ ЗАКАЗ
+                    </a>
+                    <a type="button"
+                       class="primary-btn order-submit"
+                       data-toggle="modal"
+                       data-target="#authWarningModal"
+                       sec:authorize="isAnonymous()">
+                        ОФОРМИТЬ ЗАКАЗ
+                    </a>
+                </div>
+                <div th:unless="${cart.getItems().size() > 0}" >
+                    <span>Ваша корзина пуста</span>
+                    <a href="#"
+                       type="button"
+                       class="primary-btn order-submit"
+                       th:href="@{/shop}">
+                        ПЕРЕЙТИ В МАГАЗИН
+                    </a>
+                </div>
+
             </div>
-            <!-- /row -->
+            <!-- /Order Details -->
         </div>
-        <!-- /container -->
+        <!-- /row -->
     </div>
-    <!-- /SECTION -->
-
-
-<!--<div class="container">-->
-    <!--<br>-->
-    <!--<h1>Корзина</h1>-->
-    <!--<div th:if="${cart.getItems().size() > 0}" >-->
-        <!--<table class="table table-hover">-->
-            <!--<thead class="thead-dark">-->
-            <!--<tr>-->
-                <!--<th>№</th>-->
-                <!--<th>Название товара</th>-->
-                <!--<th>Цена за ед.</th>-->
-                <!--<th>Кол-во</th>-->
-                <!--<th>Сумма</th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr th:each="cartItem, itrStat : ${cart.getItems()}">-->
-                <!--<td th:text="${itrStat.index + 1}"/>-->
-                <!--<td th:text="${cartItem.product.title}"/>-->
-                <!--<td th:text="${cartItem.itemPrice}"/>-->
-                <!--<td th:text="${cartItem.quantity}"/>-->
-                <!--<td th:text="${cartItem.totalPrice}"/>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td/><td/><td/>-->
-                <!--<td>Итого заказ:</td>-->
-                <!--<td th:text="${cart.totalCost}"/>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
-        <!--<br>-->
-
-        <!--<a sec:authorize="isAuthenticated()" type="button" class="btn btn-primary" th:href="@{/shop/order/fill}">Продолжить оформление заказа</a>-->
-        <!--<a sec:authorize="isAnonymous()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#authWarningModal">Продолжить оформление заказа</a>-->
-
-    <!--</div>-->
-    <!--<div th:unless="${cart.getItems().size() > 0}" >-->
-        <!--<span>Ваша корзина пуста</span>-->
-    <!--</div>-->
-<!--</div>-->
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
 
 <div class="modal fade" id="authWarningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

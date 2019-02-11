@@ -13,6 +13,8 @@ Fonts: Montserrat
 
 Table OF Contents
 ------------------------------------
+0 > REWRITE BOOTSTRAP STYLES
+------ Alert Danger
 1 > GENERAL
 ------ Typography
 ------ Buttons
@@ -46,6 +48,27 @@ Table OF Contents
 11 > SLICK STYLE
 12 > RESPONSIVE
 ------------------------------------*/
+
+/*=========================================================
+	00 -> REWRITE BOOTSTRAP STYLES
+===========================================================*/
+
+.alert-danger {
+  color: #D10024;
+  background-color: #FFF0F1;
+  border-color: #D10024;
+  border-radius: 0;
+}
+
+.input-group-addon {
+  border: 1px solid #E4E7ED;
+  background-color: #FFFFFF;
+  border-radius: 0;
+}
+
+.error {
+  color: #D10024;
+}
 
 /*=========================================================
 	01 -> GENERAL
@@ -82,6 +105,7 @@ a {
 a:hover, a:focus{
   color: #D10024;
   text-decoration: none;
+  cursor: pointer;
   outline: none;
 }
 ul, ol {
@@ -605,8 +629,8 @@ textarea.input {
 }
 
 
-.cart-dropdown .cart-btns>a,
-.cart-dropdown .cart-btns>button {
+.cart-btns>a,
+.cart-btns>button {
   display: inline-block;
   width: calc(50% - 0px);
   padding: 12px;
@@ -619,14 +643,15 @@ textarea.input {
   border: 0;
 }
 
-.cart-dropdown .cart-btns>a:first-child,
-.cart-dropdown .cart-btns>button:first-child {
+.cart-btns>a:first-child,
+.cart-btns>button:first-child {
   margin-right: -4px;
   background-color: #1e1f29;
 }
 
-.cart-dropdown .cart-btns>a:hover,
-.cart-dropdown .cart-btns>button:hover {
+
+.cart-btns>a:hover,
+.cart-btns>button:hover {
   opacity: 0.9;
 }
 
@@ -1876,6 +1901,8 @@ textarea.input {
   border-right: 1px solid #E4E7ED;
   border-left: 1px solid #E4E7ED;
   border-bottom: 1px solid #E4E7ED;
+  min-height: 220px;
+
 }
 
 .order-details:before {
